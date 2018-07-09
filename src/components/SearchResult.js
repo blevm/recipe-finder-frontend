@@ -7,8 +7,7 @@ const SearchResult = (props) => {
 console.log(`description`, descriptionList);
   return (
     <Card
-      href={props.recipe.url}
-      target="_blank"
+      onClick = {props.selectRecipe}
       image={props.recipe.image}
       header={props.recipe.label}
       meta={props.recipe.source}
