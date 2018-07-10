@@ -1,13 +1,11 @@
 import React from 'react';
-import exampleResults from '../exampleresults.json';
-import SearchResult from './SearchResult';
+import Recipe from './Recipe';
 import { Card } from 'semantic-ui-react';
 
 class SearchResultsList extends React.Component {
 
   render() {
-    console.log(exampleResults.hits)
-    let allRecipes = exampleResults.hits.map(res => <SearchResult selectRecipe={() => this.props.selectRecipe(res.recipe)} recipe={res.recipe} />)
+    let allRecipes = this.props.recipes.map(res => <Recipe selectRecipe={() => this.props.selectRecipe(res.recipe)} recipe={res.recipe} />)
     return (
     <Card.Group centered itemsPerRow={4}>
       {allRecipes}

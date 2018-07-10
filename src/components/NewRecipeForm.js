@@ -1,41 +1,44 @@
-import React from 'react';
-import { Form, Input, TextArea, Button } from 'semantic-ui-react';
+import React, { Component } from 'react'
+import { Form } from 'semantic-ui-react'
 
-class NewRecipeForm extends React.component {
-  constructor(props) {
-    super(props)
+class NewRecipeForm extends Component {
+  state = { name: '', title: '', submittedName: '', submittedEmail: '' }
 
-    this.state={
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
-    }
+  handleSubmit = () => {
+    const { name, title } = this.state
+
+    //insert POST here
+
+    // this.setState({ submittedName: name, submittedEmail: title })
   }
 
   render() {
+    const { name, title, submittedName, submittedEmail } = this.state
+
     return (
-      <Form>
-    <Form.Group widths='equal'>
-      <Form.Field required
-        id='form-input-control-recipe-title'
-        control={Input}
-        label='Recipe Title'
-        placeholder='Recipe Title'
-      />
-    </Form.Group>
-    <Form.Field required
-      id='form-textarea-control-opinion'
-      control={TextArea}
-      label='Ingredients'
-      placeholder='Ingredients'
-    />
-    <Form.Field
-      id='form-button-control-public'
-      control={Button}
-      content='Confirm'
-      label='Label with htmlFor'
-    />
-  </Form>
+      <div>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group>
+            <Form.Input placeholder='Name' name='name' value={name} onChange={this.handleChange} />
+            <Form.Input
+              placeholder='Email'
+              name='title'
+              value={title}
+              onChange={this.handleChange}
+            />
+            <Form.Button content='Submit' />
+          </Form.Group>
+        </Form>
+        <strong>onChange:</strong>
+        <pre>{JSON.stringify({ name, title }, null, 2)}</pre>
+        <strong>onSubmit:</strong>
+        <pre>{JSON.stringify({ submittedName, submittedEmail }, null, 2)}</pre>
+      </div>
     )
   }
 }
+
 
 export default NewRecipeForm;

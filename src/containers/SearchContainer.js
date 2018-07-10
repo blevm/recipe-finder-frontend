@@ -3,6 +3,8 @@ import SearchBar from '../components/SearchBar';
 import SearchResultsList from '../components/SearchResultsList';
 import { Divider } from 'semantic-ui-react'
 import RecipeDetails from '../components/RecipeDetails'
+import Adapter from '../components/Adapter'
+
 
 class SearchContainer extends React.Component {
   constructor(props) {
@@ -15,8 +17,14 @@ class SearchContainer extends React.Component {
     }
   }
 
+
+
   handleSubmit = () => {
     console.log('inside handle submit', this.state.term)
+    Adapter.getRecipes(this.state.term)
+      .then( data => this.setState({
+        searchedRecipes: data.hits
+      }, () => console.log(this.state.searchedRecipes)))
   }
 
   handleSearchChange = (event) => {
@@ -45,7 +53,7 @@ class SearchContainer extends React.Component {
         <div>
           <SearchBar term={this.state.term} handleSubmit={this.handleSubmit} handleSearchChange={this.handleSearchChange}/>
           <Divider />
-          <SearchResultsList selectRecipe={this.selectRecipe} />
+          <SearchResultsList recipes={this.state.searchedRecipes} selectRecipe={this.selectRecipe} />
         </div>
         }
       </React.Fragment>
