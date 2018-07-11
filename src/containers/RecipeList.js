@@ -1,6 +1,7 @@
 import React from 'react';
 import Recipe from '../components/Recipe';
 import RecipeDetails from '../components/RecipeDetails';
+import { Card } from 'semantic-ui-react'
 
 class RecipeList extends React.Component {
   state = {
@@ -41,6 +42,13 @@ class RecipeList extends React.Component {
     })
   }
 
+  clearRecipe = () => {
+    console.log('inside clear recipe')
+    this.setState({
+      selectedRecipe: null
+    })
+  }
+
   selectRecipe = (recipe) => {
     this.setState({
       selectedRecipe: recipe
@@ -52,11 +60,14 @@ class RecipeList extends React.Component {
     return (
       <React.Fragment>
         {this.state.selectedRecipe !== null ? <RecipeDetails clearRecipe={this.clearRecipe} recipe={this.state.selectedRecipe} /> :
-        <div>
-          <h2>My Recipes</h2>
-          {allRecipes}
-        </div>
-        }
+          <React.Fragment>
+            <h2>My Recipes</h2>
+            <br></br>
+            <Card.Group centered itemsPerRow={3}>
+              {allRecipes}
+            </Card.Group>
+          </React.Fragment>
+          }
       </React.Fragment>
     )
   }
