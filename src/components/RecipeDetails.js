@@ -18,6 +18,32 @@ const RecipeDetails = (props) => {
 
   let ingredients = (recipe) ? collectIngredients() : null
 
+  const postRecipe = (recipe) => {
+    let recipeString = recipe.ingredients.map(ing => ing["text"]).join(', ')
+
+    let body = {
+      recipe: {
+        label: recipe.label,
+        source: recipe.source,
+        url: recipe.url,
+        image: recipe.image,
+        ingredients: recipeString
+      }
+    }
+
+    let config = {
+      method: 'POST',
+      headers: {"Content-Type": "application/json",
+                "Authorization": localStorage.getItem('token')
+      },
+      body: JSON.stringify(body)
+    }
+
+    fetch('http://localhost:4000/save-recipe', config)
+    .then(resp => resp.json())
+    .then(data => console.log(data))
+  }
+
   return (
     <div>
       <img src={recipe.image}/>
@@ -25,6 +51,7 @@ const RecipeDetails = (props) => {
       <h4>See full recipe from {recipe.source} <a href={recipe.url} target="_blank">here.</a></h4>
       {ingredients}
       <button onClick={props.clearRecipe}>Back to List</button>
+      <button onClick={() => postRecipe(recipe)}>Add to My Recipe List</button>
     </div>
   )
 }

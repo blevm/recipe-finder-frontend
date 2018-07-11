@@ -14,7 +14,7 @@ class RecipeList extends React.Component {
 
   getMyRecipes = () => {
     fetch(
-      `http://localhost:4000/users/2/recipes`,
+      `http://localhost:4000/my-recipes`,
       {
         headers: {
           "Content-Type": "application/json",
