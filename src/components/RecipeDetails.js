@@ -1,19 +1,31 @@
 import React from 'react';
-import exampleResults from '../exampleresults.json';
 
 const RecipeDetails = (props) => {
+
   let recipe = props.recipe
-  console.log('recipe inside recipe details', recipe)
-  let ingredients = (recipe) ?  <ul style={{listStyleType: "none"}}>{recipe.ingredients.map(ing => <li>{ing["text"]}</li>)}</ul> : null
+
+  let collectIngredients = () => {
+    if (typeof(recipe.ingredients) === 'object') {
+      return <ul>{recipe.ingredients.map(ing => <li>{ing["text"]}</li>)}</ul>
+    }
+    else if (typeof(recipe.ingredients) === 'string') {
+      let ings = recipe.ingredients.split(', ')
+      return <ul>{ings.map(ing => <li>{ing}</li>)}</ul>
+    } else {
+      return null
+    }
+  }
+
+  let ingredients = (recipe) ? collectIngredients() : null
+
   return (
     <div>
       <img src={recipe.image}/>
       <h1>{recipe.label}</h1>
+      <h4>See full recipe from {recipe.source} <a href={recipe.url} target="_blank">here.</a></h4>
       {ingredients}
-      <p>See full recipe from {recipe.source} <a href={recipe.url} target="_blank">here.</a></p>
       <button onClick={props.clearRecipe}>Back to List</button>
     </div>
-
   )
 }
 

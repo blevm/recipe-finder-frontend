@@ -1,13 +1,8 @@
 import React from 'react';
 import { Card } from 'semantic-ui-react';
 
-
-
 const Recipe = (props) => {
-  let descriptionList = (props.recipe) ?  <ul>{props.recipe.ingredients.map(ing => <li>{ing["text"]}</li>)}</ul> : null
 
-
-  console.log(`description`, descriptionList);
     return (
       <Card
         onClick = {props.selectRecipe}

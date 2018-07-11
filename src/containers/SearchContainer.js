@@ -1,9 +1,9 @@
 import React from 'react';
 import SearchBar from '../components/SearchBar';
 import SearchResultsList from '../components/SearchResultsList';
-import { Divider } from 'semantic-ui-react'
-import RecipeDetails from '../components/RecipeDetails'
-import Adapter from '../components/Adapter'
+import { Divider } from 'semantic-ui-react';
+import RecipeDetails from '../components/RecipeDetails';
+import Adapter from '../components/Adapter';
 
 
 class SearchContainer extends React.Component {
@@ -16,8 +16,6 @@ class SearchContainer extends React.Component {
       selectedRecipe: null
     }
   }
-
-
 
   handleSubmit = () => {
     console.log('inside handle submit', this.state.term)

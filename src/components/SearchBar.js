@@ -5,7 +5,6 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props)
   }
-        // <Input placeholder='Search Recipes (Powered by Edamam)' style={{width: 500}} value={this.props.term} onChange={this.props.handleSearchChange} />
 
   render() {
     return(
