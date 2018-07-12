@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Button } from 'semantic-ui-react';
+import { Form, Input, Button, Grid } from 'semantic-ui-react';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -9,10 +9,14 @@ class SearchBar extends React.Component {
   render() {
     return(
         <Form onSubmit={this.props.handleSubmit}>
-           <Form.Group>
-             <Form.Input className="search-form" placeholder='Search Recipes (Powered by Edamam)' value={this.props.term} onChange={this.props.handleSearchChange} />
-             <Form.Button content='Submit' />
-           </Form.Group>
+          <Grid>
+            <Grid.Row centered>
+               <Form.Group>
+                 <Form.Input className="search-form" placeholder='Search Recipes (Powered by Edamam)' value={this.props.term} onChange={this.props.handleSearchChange} />
+                 <Form.Button content='Submit' />
+               </Form.Group>
+            </Grid.Row>
+          </Grid>
         </Form>
     )
   }

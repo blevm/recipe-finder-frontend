@@ -1,12 +1,13 @@
 import React from 'react';
 import Recipe from '../components/Recipe';
 import RecipeDetails from '../components/RecipeDetails';
-import { Card } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react';
 
 class RecipeList extends React.Component {
   state = {
     recipes: [],
-    selectedRecipe: null
+    selectedRecipe: null,
+    recipeList: "true"
   }
 
   componentDidMount() {
@@ -55,19 +56,26 @@ class RecipeList extends React.Component {
     }, () => console.log(this.state.selectedRecipe))
   }
 
+  clearRecipe = () => {
+    console.log('inside clear recipe')
+    this.setState({
+      selectedRecipe: null
+    })
+  }
+
   render() {
+    console.log('all my recipes inside my list', this.state.recipes)
     let allRecipes = this.state.recipes.map(recipe => <Recipe recipe={recipe} selectRecipe={() => this.selectRecipe(recipe)} />)
     return (
       <React.Fragment>
-        {this.state.selectedRecipe !== null ? <RecipeDetails clearRecipe={this.clearRecipe} recipe={this.state.selectedRecipe} /> :
-          <React.Fragment>
-            <h2>My Recipes</h2>
-            <br></br>
-            <Card.Group centered itemsPerRow={3}>
-              {allRecipes}
-            </Card.Group>
-          </React.Fragment>
-          }
+        {this.state.selectedRecipe !== null ? <RecipeDetails recipeList={this.state.recipeList} clearRecipe={this.clearRecipe} recipe={this.state.selectedRecipe} /> :
+        <div>
+          <h2>My Recipes</h2>
+          <Card.Group centered itemsPerRow={4}>
+          {allRecipes}
+          </Card.Group>
+        </div>
+        }
       </React.Fragment>
     )
   }
