@@ -51,7 +51,7 @@ class SearchContainer extends React.Component {
         <div>
           <SearchBar term={this.state.term} handleSubmit={this.handleSubmit} handleSearchChange={this.handleSearchChange}/>
           <Divider />
-          <SearchResultsList recipes={this.state.searchedRecipes} selectRecipe={this.selectRecipe} />
+          {this.state.searchedRecipes.length !== 0 ? <SearchResultsList recipes={this.state.searchedRecipes} selectRecipe={this.selectRecipe} /> : <h1>Deliciousness is just a click away...</h1>}
         </div>
         }
       </React.Fragment>
