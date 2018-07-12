@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
+import { Button, Grid, Image } from 'semantic-ui-react';
 
 const RecipeDetails = (props) => {
+  console.log('props inside of recipeDetails is history here?', props)
 
   let recipe = props.recipe
 
@@ -42,19 +43,43 @@ const RecipeDetails = (props) => {
 
     fetch('http://localhost:4000/save-recipe', config)
     .then(resp => resp.json())
-    .then(data => console.log(data))
+    .then(() => {props.history.push("/my_recipes")})
   }
 
   return (
-    <div>
-      <img src={recipe.image}/>
-      <h1>{recipe.label}</h1>
-      <h4>See full recipe from {recipe.source} <a href={recipe.url} target="_blank">here.</a></h4>
-      {ingredients}
-      <br/>
-      <Button color="yellow" onClick={props.clearRecipe}>Back to List</Button>  {props.recipeList !== "true" ? <Button color="green" onClick={() => postRecipe(recipe)}>Add to My Recipe List</Button> : null}
-    </div>
+    <React.Fragment>
+      <Grid divided='vertically'>
+        <Grid.Row columns={2}>
+          <Grid.Column className="square">
+            <Image className="center-content" src={recipe.image} />
+          </Grid.Column>
+          <Grid.Column>
+            <div className="center-vertically">
+            <h1>{recipe.label}</h1>
+            <h4>See full recipe from {recipe.source} <a href={recipe.url} target="_blank">here.</a></h4>
+            {ingredients}
+            <br/>
+              <Button color="yellow" onClick={props.clearRecipe}>Back to List</Button>  {props.recipeList !== "true" ? <Button color="green" onClick={() => postRecipe(recipe)}>Add to My Recipe List</Button> : null}
+            </div>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    </React.Fragment>
   )
 }
+
+// <Grid>
+//   <Grid.Column width={4}>
+//     <Image src={recipe.image} />
+//   </Grid.Column>
+//   <Grid.Column width={9}>
+//     <h1>{recipe.label}</h1>
+//     <h4>See full recipe from {recipe.source} <a href={recipe.url} target="_blank">here.</a></h4>
+//     {ingredients}
+//     <br/>
+//     <Button color="yellow" onClick={props.clearRecipe}>Back to List</Button>  {props.recipeList !== "true" ? <Button color="green" onClick={() => postRecipe(recipe)}>Add to My Recipe List</Button> : null}
+//   </Grid.Column>
+// </Grid>
+//
 
 export default RecipeDetails;
