@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  margin: 5px;
+  padding: 5px;
+}
+
+.body {
+  margin: 20px;
+  padding: 20px;
 }
 
 .App-logo {
@@ -37,3 +44,34 @@
   margin: 0;
   padding: 0;
 }
+
+.center-content {
+  zoom: 2;
+
+ display: block;
+ margin: auto;
+
+ height: auto;
+ max-height: 100%;
+
+ width: auto;
+ max-width: 100%;
+}
+
+.center-vertically {
+    padding: 70px 0;
+    text-align: center;
+}
+/*
+.center-vertically {
+    height: 200px;
+    position: relative;
+}
+
+.center-text {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */

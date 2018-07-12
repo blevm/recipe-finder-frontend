@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Form, Grid, Segment } from 'semantic-ui-react';
 
 class Register extends Component {
   state = {
@@ -32,27 +33,33 @@ class Register extends Component {
 
   render() {
     return (
-      <div className="registration">
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            onChange={this.handleChange}
-            value={this.state.username}
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={this.handleChange}
-            value={this.state.password}
-          />
-          <input type="submit" value="Register" />
-        </form>
-      </div>
+      <React.Fragment>
+        <Grid>
+          <Grid.Row centered>
+            <Segment padded='very' style={{width: '40%'}}>
+              <Form onSubmit={this.handleSubmit}>
+                <Form.Input
+                  label="Username"
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                  onChange={this.handleChange}
+                  value={this.state.username}
+                />
+                <Form.Input
+                  label="Password"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  onChange={this.handleChange}
+                  value={this.state.password}
+                />
+              <Form.Button type="submit" color='blue' content="Register" />
+            </Form>
+          </Segment>
+        </Grid.Row>
+      </Grid>
+    </React.Fragment>
     )
   }
 }

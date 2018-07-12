@@ -1,10 +1,11 @@
 import React from 'react';
 import Adapter from './Adapter';
 import { withRouter } from 'react-router';
+import { Button } from 'semantic-ui-react';
 
 const LogoutButton = ({ to = "/login", history }) => {
     return (
-      <button
+      <Button basic color='red'
         className="logout-button"
         onClick={() => {
           Adapter.logout();
@@ -12,7 +13,7 @@ const LogoutButton = ({ to = "/login", history }) => {
         }}
       >
         Logout
-      </button>
+      </Button>
     )
 }
 
