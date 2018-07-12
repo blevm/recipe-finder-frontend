@@ -47,15 +47,18 @@ class SearchContainer extends React.Component {
   render() {
     return (
       <React.Fragment>
-        {this.state.selectedRecipe !== null ? <RecipeDetails clearRecipe={this.clearRecipe} recipe={this.state.selectedRecipe} /> :
-        <Grid>
-          <Grid.Row centered>
-          <SearchBar term={this.state.term} handleSubmit={this.handleSubmit} handleSearchChange={this.handleSearchChange}/>
-          </Grid.Row>
-          <Divider />
-          {this.state.searchedRecipes.length !== 0 ? <SearchResultsList recipes={this.state.searchedRecipes} selectRecipe={this.selectRecipe} /> : <h1>Deliciousness is just a click away...</h1>}
-        </Grid>
-      </React.Fragment>
+       {this.state.selectedRecipe !== null ? <RecipeDetails clearRecipe={this.clearRecipe} recipe={this.state.selectedRecipe} /> :
+       <React.Fragment>
+       <Grid>
+         <Grid.Row centered>
+           <SearchBar term={this.state.term} handleSubmit={this.handleSubmit} handleSearchChange={this.handleSearchChange}/>
+         </Grid.Row>
+       </Grid>
+         <Divider />
+         {this.state.searchedRecipes.length !== 0 ? <SearchResultsList recipes={this.state.searchedRecipes} selectRecipe={this.selectRecipe} /> : <h1>Deliciousness is just a click away...</h1>}
+        </React.Fragment>
+       }
+     </React.Fragment>
     )
   }
 }
