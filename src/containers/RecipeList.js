@@ -2,6 +2,7 @@ import React from 'react';
 import Recipe from '../components/Recipe';
 import RecipeDetails from '../components/RecipeDetails';
 import { Card, Input } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 // import './stylesheets/index.css';
 // import 'semantic-ui-css/semantic.min.css'
 
@@ -39,8 +40,6 @@ class RecipeList extends React.Component {
         filteredRecipes: json
       });
     })
-    ///////////////// YO WHAT IS THIS /////////////////////////////////////////////
-    ////// WHAT DOES HE MEAN TO ABSTRACT LOCAL STORAGE INTO AN ADAPTER ///////////
     .catch(err => {
       console.log('catch');
       this.setState({
@@ -93,44 +92,40 @@ class RecipeList extends React.Component {
     }
 
 
-
-
-
-
   render() {
     let allRecipes = this.state.recipes.map(recipe => <Recipe recipe={recipe} selectRecipe={() => this.selectRecipe(recipe)} />)
+    console.log(this.state.recipes.length === 0)
     return (
       <React.Fragment>
-
-
-        <div>
-          <Input
-             style={{padding:'10px'}}
-             size='massive'
-             onChange={this.handleChange}
-             placeholder='Search By Name...'
-             value={this.state.searchTerm}
-             type="text"
-          />
-          <Input
-            style={{padding:'10px'}}
-            size='massive'
-            onChange={this.handleChangeIng}
-            placeholder='Search By Ingredients...'
-            value={this.state.searchTermIng}
-            type="text"
-          />
-
-        </div>
-
         {this.state.selectedRecipe !== null ? <RecipeDetails history={this.props.history} recipeList={this.state.recipeList} clearRecipe={this.clearRecipe} recipe={this.state.selectedRecipe} /> :
+        (this.state.recipes.length === 0) ? <h3>You don't have any recipes yet! Perform a <NavLink to='/'>search</NavLink> or <NavLink to="/new_recipe">add a recipe</NavLink> to get started.</h3> :
+      <div>
+            <div>
+              <Input
+                 style={{padding:'10px'}}
+                 size='massive'
+                 onChange={this.handleChange}
+                 placeholder='Search By Name...'
+                 value={this.state.searchTerm}
+                 type="text"
+              />
+              <Input
+                style={{padding:'10px'}}
+                size='massive'
+                onChange={this.handleChangeIng}
+                placeholder='Search By Ingredients...'
+                value={this.state.searchTermIng}
+                type="text"
+              />
+            </div>
 
-        <div>
-          <h2>My Recipes</h2>
-          <Card.Group centered itemsPerRow={4}>
-          {allRecipes}
-          </Card.Group>
-        </div>
+            <div>
+              <h2>My Recipes</h2>
+              <Card.Group centered itemsPerRow={4}>
+              {allRecipes}
+              </Card.Group>
+            </div>
+          </div>
         }
       </React.Fragment>
     )
