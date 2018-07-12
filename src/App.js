@@ -18,11 +18,11 @@ class App extends Component {
         <h1 className="pageTitle">Gourmand</h1>
         <div id="edamam-badge" data-color="white"></div>
         <br></br>
-          <Route exact path="/" component={SearchContainer}/>
+          <Route exact path="/" component={(props) => <SearchContainer {...props}/>}/>
           { Adapter.isLoggedIn() ?
             <Fragment>
               <Redirect to="/" />
-              <Route exact path="/my_recipes" component={RecipeList}/>
+              <Route exact path="/my_recipes" component={(props) => <RecipeList {...props}/>} />
               <Route exact path="/new_recipe" component={(props) => <NewRecipeForm {...props} />}/>
             </Fragment>
             :

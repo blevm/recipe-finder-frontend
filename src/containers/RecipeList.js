@@ -57,18 +57,16 @@ class RecipeList extends React.Component {
   }
 
   clearRecipe = () => {
-    console.log('inside clear recipe')
     this.setState({
       selectedRecipe: null
     })
   }
 
   render() {
-    console.log('all my recipes inside my list', this.state.recipes)
     let allRecipes = this.state.recipes.map(recipe => <Recipe recipe={recipe} selectRecipe={() => this.selectRecipe(recipe)} />)
     return (
       <React.Fragment>
-        {this.state.selectedRecipe !== null ? <RecipeDetails recipeList={this.state.recipeList} clearRecipe={this.clearRecipe} recipe={this.state.selectedRecipe} /> :
+        {this.state.selectedRecipe !== null ? <RecipeDetails history={this.props.history} recipeList={this.state.recipeList} clearRecipe={this.clearRecipe} recipe={this.state.selectedRecipe} /> :
         <div>
           <h2>My Recipes</h2>
           <Card.Group centered itemsPerRow={4}>
