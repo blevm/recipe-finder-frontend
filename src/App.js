@@ -1,13 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
 import SearchContainer from './containers/SearchContainer';
-import RecipeDetails from './components/RecipeDetails'
+import RecipeDetails from './components/RecipeDetails';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Register from './components/Register';
 import Login from './components/Login';
 import RecipeList from './containers/RecipeList';
 import NavBar from './components/NavBar';
 import Adapter from './components/Adapter';
+import NewRecipeForm from './components/NewRecipeForm';
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
             <Fragment>
               <Redirect to="/" />
               <Route exact path="/my_recipes" component={RecipeList}/>
+              <Route exact path="/new_recipe" component={(props) => <NewRecipeForm {...props} />}/>
             </Fragment>
             :
               <Fragment>

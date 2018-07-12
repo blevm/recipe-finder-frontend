@@ -43,6 +43,13 @@ class RecipeList extends React.Component {
     })
   }
 
+  clearRecipe = () => {
+    console.log('inside clear recipe')
+    this.setState({
+      selectedRecipe: null
+    })
+  }
+
   selectRecipe = (recipe) => {
     this.setState({
       selectedRecipe: recipe

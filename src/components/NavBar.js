@@ -9,10 +9,10 @@ const NavBar = (props) => {
         { Adapter.isLoggedIn() ?
           <Fragment>
             <button onClick={() => {
-                Adapter.logout();
-                props.history.push("/login");
+                Adapter.logout()
               }}>Logout</button>
             <NavLink activeClassName="selected" exact to="/my_recipes">My Recipes</NavLink>
+            <NavLink activeClassName="selected" exact to="/new_recipe">Add A Recipe</NavLink>
           </Fragment>
           :
             <Fragment>

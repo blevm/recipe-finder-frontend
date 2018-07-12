@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchBar from '../components/SearchBar';
 import SearchResultsList from '../components/SearchResultsList';
-import { Divider } from 'semantic-ui-react';
+import { Divider, Grid } from 'semantic-ui-react';
 import RecipeDetails from '../components/RecipeDetails';
 import Adapter from '../components/Adapter';
 
@@ -48,12 +48,13 @@ class SearchContainer extends React.Component {
     return (
       <React.Fragment>
         {this.state.selectedRecipe !== null ? <RecipeDetails clearRecipe={this.clearRecipe} recipe={this.state.selectedRecipe} /> :
-        <div>
+        <Grid>
+          <Grid.Row centered>
           <SearchBar term={this.state.term} handleSubmit={this.handleSubmit} handleSearchChange={this.handleSearchChange}/>
+          </Grid.Row>
           <Divider />
           {this.state.searchedRecipes.length !== 0 ? <SearchResultsList recipes={this.state.searchedRecipes} selectRecipe={this.selectRecipe} /> : <h1>Deliciousness is just a click away...</h1>}
-        </div>
-        }
+        </Grid>
       </React.Fragment>
     )
   }
