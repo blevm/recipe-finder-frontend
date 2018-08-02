@@ -26,6 +26,7 @@ class Login extends Component {
       .then(res => res.json())
       .then(json => {
         localStorage.setItem('token', json.token);
+        console.log(this.props.history)
         this.props.history.push("/");
       })
   }
