@@ -8,6 +8,10 @@ To use Gourmand, first fork and clone the Rails backend repo, found [here](https
 
 Once you have the backend running, fork and clone the React frontend, which is in this repo. Before you proceed, request your own API key from Edamam and adjust the routes accordingly to complete successful queries of the API. Next, run `npm install` in the command line, followed by `npm install --save semantic-ui-react`. Then, run `npm start`. As long as you seeded your database when setting up the backend, you can log in as 'Guest' with the password 'guest'.
 
+## How to use?
+Watch this helpful demo video to get started!
+[Gourmand](https://www.youtube.com/watch?v=JPhX_7idf-Q&t=6s)
+
 ## Built With
 - JavaScript
 - React
@@ -15,6 +19,10 @@ Once you have the backend running, fork and clone the React frontend, which is i
 - PostgreSQL
 - Semantic UI React
 - CSS
+
+## API Reference
+
+[Edamam API](https://developer.edamam.com/)
 
 ## Authors
 - Betsy Sallee ([Github](https://github.com/ensallee))
